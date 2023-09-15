@@ -1,0 +1,10 @@
+services:
+  server:
+    image: node
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend:/home/node/app
+    working_dir: /home/node/app
+    environment: {}
