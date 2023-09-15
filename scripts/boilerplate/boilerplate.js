@@ -13,19 +13,8 @@ fs.access(STRUCT_FILE, fs.constants.R_OK)
       (acc, item) => {
         if (/^\s*$/.test(item)) return acc;
 
-        const node = {};
-        if (/^\s*\w/i.test(item) && !/.*->.*/.test(item)) {
-          node.type = "folder";
-          node.children = [];
-        } else if (/^\s*-\s+\w/i.test(item)) {
-          node.type = "file";
-        } else if (/.*->.*/.test(item)) {
-          node.type = "link";
-          node.source = item.replace(/^.*->\s+/, "");
-        }
-        node.name = item.replace(/^\s*-?\s+/, "").replace(/\s+->.*/, "");
+        const { level, ...node } = determineFileInfos(item);
 
-        const level = item.match(/^\s*/)[0].length;
         if (level > acc.level) {
           if (Array.isArray(acc.cursor))
             acc.cursor = acc.cursor[acc.cursor.length - 1];
@@ -58,24 +47,55 @@ fs.access(STRUCT_FILE, fs.constants.R_OK)
   .then(({ result }) => generateStructure(result))
   .then(() => console.log("Structure created"));
 
+function determineFileInfos(item) {
+  const node = {};
+  if (/^\s*\w/i.test(item) && !/.*->.*/.test(item)) {
+    node.type = "folder";
+    node.children = [];
+  } else if (/^\s*-\s+\w/i.test(item)) {
+    node.type = "file";
+  } else if (/.*->.*/.test(item)) {
+    node.type = "link";
+    node.source = item.replace(/^.*->\s+/, "");
+  }
+  node.name = item.replace(/^\s*-?\s+/, "").replace(/\s+->.*/, "");
+
+  const level = item.match(/^\s*/)[0].length;
+
+  return { level, ...node };
+}
+
 async function generateStructure(structure, currentPath = "./") {
   if (Array.isArray(structure)) {
-    for (let sub of structure) await generateStructure(sub);
+    await Promise.all(structure.map((sub) => generateStructure(sub)));
   } else {
     const filePath = path.join(currentPath, structure.name);
     switch (structure.type) {
       case "folder":
-        await fs.mkdir(filePath);
-        for (let sub of structure.children) {
-          await generateStructure(sub, filePath);
-        }
+        if (!(await fileExists(filePath))) await fs.mkdir(filePath);
+        await Promise.all(
+          structure.children.map((sub) => generateStructure(sub, filePath))
+        );
         break;
       case "file":
-        await fs.writeFile(filePath, "");
+        if (!(await fileExists(filePath))) await fs.writeFile(filePath, "");
         break;
       case "link":
-        await fs.symlink(path.join(process.cwd(), structure.source), filePath);
+        if (!(await fileExists(filePath)))
+          await fs.symlink(
+            path.join(process.cwd(), structure.source),
+            filePath
+          );
         break;
     }
+  }
+}
+
+async function fileExists(filePath) {
+  try {
+    await fs.access(filePath, fs.constants.F_OK);
+    return true;
+  } catch (error) {
+    return false;
   }
 }
