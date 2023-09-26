@@ -1,6 +1,6 @@
-Last name;Identifier;First name;Username
-Booker;9012;Rachel;booker12
-Grey;2070;Laura;grey07
-Johnson;4081;Craig;johnson81
-Jenkins;9346;Mary;jenkins46
-Smith;5079;Jamie;smith79
+Last name;Username;First name;Identifier
+Booker;booker12;Rachel;9012
+Grey;grey07;Laura;2070
+Johnson;johnson81;Craig;4081
+Jenkins;jenkins46;Mary;9346
+Smith;smith79;Jamie;5079
