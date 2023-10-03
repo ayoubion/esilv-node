@@ -1,21 +1,86 @@
-CP;Ville;CODE_DEPT;DEP;CODE_REG;REGION;GAZOLE;SP95;E85;GPLC;E10;SP98
-20230;Poggio-Mezzana;2;Haute-Corse;94;Corse;1.88;1.91;0;0;0;0
-24310;Brantôme en Périgord;24;Dordogne;75;Nouvelle-Aquitaine;1.929;1.959;0;0;0;1.999
-25220;Chalezeule;25;Doubs;27;Bourgogne-Franche-Comté;1.919;0;0;0;1.766;1.874
-33340;Lesparre-Médoc;33;Gironde;75;Nouvelle-Aquitaine;1.99;0;0;0;1.99;1.99
-37800;Noyant-de-Touraine;37;Indre-et-Loire;24;Centre-Val de Loire;1.99;0;0;0;1.99;1.99
-38750;Huez;38;Isère;84;Auvergne-Rhône-Alpes;2.05;2.11;0;0;0;2.16
-40400;Tartas;40;Landes;75;Nouvelle-Aquitaine;1.919;1.999;0;0;0;2.029
-43170;Saugues;43;Haute-Loire;84;Auvergne-Rhône-Alpes;1.99;0;0;0;1.99;1.99
-49410;Mauges-sur-Loire;49;Maine-et-Loire;52;Pays de la Loire;1.909;0;0;0;1.899;1.979
-51140;Muizon;51;Marne;44;Grand Est;0;0;0;0;1.99;1.99
-52500;Fayl-Billot;52;Haute-Marne;44;Grand Est;1.829;1.979;0;0;0;2.049
-59151;Arleux;59;Nord;32;Hauts-de-France;1.929;1.959;0;0;0;1.999
-59156;Lourches;59;Nord;32;Hauts-de-France;1.919;0;0;0;1.909;1.989
-71120;Vendenesse-lès-Charolles;71;Saône-et-Loire;27;Bourgogne-Franche-Comté;1.979;1.959;0;0;0;0
-71420;Perrecy-les-Forges;71;Saône-et-Loire;27;Bourgogne-Franche-Comté;1.909;1.949;1.099;0;1.909;0
-76700;Gonfreville-l'Orcher;76;Seine-Maritime;28;Normandie;2.04;2.07;1.3;0;0;2.09
-78700;Conflans-Sainte-Honorine;78;Yvelines;11;Île-de-France;2.229;0;0;0;2.169;2.289
-83330;Le Beausset;83;Var;93;Provence-Alpes-Côte d'Azur;1.979;0;0;0;1.939;2.039
-6300;Nice;6;Alpes-Maritimes;93;Provence-Alpes-Côte d'Azur;1.99;0;0;1.034;1.99;0
-1300;Chazey-Bons;1;Ain;84;Auvergne-Rhône-Alpes;1.924;0;0;0;1.889;1.975
+code;message
+100;Continue
+101;Switching Protocols
+102;Processing
+103;Early Hints
+200;OK
+201;Created
+202;Accepted
+203;Non-Authoritative Information
+204;No Content
+205;Reset Content
+206;Partial Content
+207;Multi-Status
+208;Already Reported
+210;Content Different
+226;IM Used
+300;Multiple Choices
+301;Moved Permanently
+302;Found
+303;See Other
+304;Not Modified
+305;Use Proxy (depuis HTTP/1.1)
+306;(inutilisé)
+307;Temporary Redirect
+308;Permanent Redirect
+310;Too many Redirects
+400;Bad Request
+401;Unauthorized
+402;Payment Required
+403;Forbidden
+404;Not Found
+405;Method Not Allowed
+406;Not Acceptable
+407;Proxy Authentication Required
+408;Request Time-out
+409;Conflict
+410;Gone
+411;Length Required
+412;Precondition Failed
+413;Request Entity Too Large
+414;Request-URI Too Long
+415;Unsupported Media Type
+416;Requested range unsatisfiable
+417;Expectation failed
+418;I’m a teapot
+419;Page expired
+421;Bad mapping / Misdirected Request
+422;Unprocessable entity
+423;Locked
+424;Method failure
+425;Too Early
+426;Upgrade Required
+427;Invalid digital signature
+428;Precondition Required
+429;Too Many Requests
+431;Request Header Fields Too Large
+449;Retry With
+450;Blocked by Windows Parental Controls
+451;Unavailable For Legal Reasons
+456;Unrecoverable Error
+444;No Response
+495;SSL Certificate Error
+496;SSL Certificate Required
+497;HTTP Request Sent to HTTPS Port
+498;Token expired/invalid
+499;Client Closed Request
+500;Internal Server Error
+501;Not Implemented
+502;Bad Gateway ou Proxy Error
+503;Service Unavailable
+504;Gateway Time-out
+505;HTTP Version not supported
+506;Variant Also Negotiates
+507;Insufficient storage
+508;Loop detected
+509;Bandwidth Limit Exceeded
+510;Not extended
+511;Network authentication required
+520;Unknown Error
+521;Web Server Is Down
+522;Connection Timed Out
+523;Origin Is Unreachable
+524;A Timeout Occurred
+525;SSL Handshake Failed
+526;Invalid SSL Certificate
+527;Railgun Error

@@ -2,8 +2,12 @@ require("../csv-utiliy/lib");
 const fs = require("node:fs/promises");
 const https = require("node:https");
 const path = require("node:path");
+const { JSDOM } = require("jsdom");
+//const InputUrl =
+//  "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/records?limit=20";
+//const InputUrl = "https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP";
 const InputUrl =
-  "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/records?limit=20";
+  "https://www.powertrafic.fr/wp-content/uploads/2023/04/image-ia-exemple.png";
 
 https
   .request(InputUrl, function (res) {
@@ -14,13 +18,22 @@ https
       });
 
       res.on("end", function () {
-        let data = Buffer.concat(bufferList).toString();
+        let data = Buffer.concat(bufferList);
 
         if (res.headers["content-type"].includes("application/json")) {
-          data = JSON.parse(data);
+          data = JSON.parse(data.toString());
+        }
+        if (res.headers["content-type"].includes("text/html")) {
+          data = new JSDOM(data.toString()).window.document;
+        }
+        if (res.headers["content-type"].includes("image/")) {
+          const extension = res.headers["content-type"].split("/")[1];
+          fs.writeFile(path.join(process.cwd(), "image." + extension), data);
+          return;
         }
 
-        data = processData(data.results);
+        //data = processData(data);
+        data = processData2(data);
 
         saveData(data);
       });
@@ -30,6 +43,7 @@ https
 
 // calculer le prix moyen de chaque carburant par ville
 function processData(data) {
+  data = data.results;
   const cities = {};
   for (const item of data) {
     cities[item.cp] = cities[item.cp] ?? {
@@ -78,3 +92,15 @@ function processData(data) {
 function saveData(data) {
   fs.writeFile(path.join(process.cwd(), "data.csv"), data.encodeCSV());
 }
+
+// get code and message for wikipedia http codes page
+processData2 = (document) => {
+  return Array.from(
+    document.querySelectorAll("table.wikitable.alternance tr:not(:first-child)")
+  ).map(function (tr) {
+    return {
+      code: parseInt(tr.children[0].textContent.trim()),
+      message: tr.children[1].textContent.trim(),
+    };
+  });
+};
