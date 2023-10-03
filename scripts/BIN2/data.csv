@@ -1,0 +1,21 @@
+CP;Ville;CODE_DEPT;DEP;CODE_REG;REGION;GAZOLE;SP95;E85;GPLC;E10;SP98
+20230;Poggio-Mezzana;2;Haute-Corse;94;Corse;1.88;1.91;0;0;0;0
+24310;Brantôme en Périgord;24;Dordogne;75;Nouvelle-Aquitaine;1.929;1.959;0;0;0;1.999
+25220;Chalezeule;25;Doubs;27;Bourgogne-Franche-Comté;1.919;0;0;0;1.766;1.874
+33340;Lesparre-Médoc;33;Gironde;75;Nouvelle-Aquitaine;1.99;0;0;0;1.99;1.99
+37800;Noyant-de-Touraine;37;Indre-et-Loire;24;Centre-Val de Loire;1.99;0;0;0;1.99;1.99
+38750;Huez;38;Isère;84;Auvergne-Rhône-Alpes;2.05;2.11;0;0;0;2.16
+40400;Tartas;40;Landes;75;Nouvelle-Aquitaine;1.919;1.999;0;0;0;2.029
+43170;Saugues;43;Haute-Loire;84;Auvergne-Rhône-Alpes;1.99;0;0;0;1.99;1.99
+49410;Mauges-sur-Loire;49;Maine-et-Loire;52;Pays de la Loire;1.909;0;0;0;1.899;1.979
+51140;Muizon;51;Marne;44;Grand Est;0;0;0;0;1.99;1.99
+52500;Fayl-Billot;52;Haute-Marne;44;Grand Est;1.829;1.979;0;0;0;2.049
+59151;Arleux;59;Nord;32;Hauts-de-France;1.929;1.959;0;0;0;1.999
+59156;Lourches;59;Nord;32;Hauts-de-France;1.919;0;0;0;1.909;1.989
+71120;Vendenesse-lès-Charolles;71;Saône-et-Loire;27;Bourgogne-Franche-Comté;1.979;1.959;0;0;0;0
+71420;Perrecy-les-Forges;71;Saône-et-Loire;27;Bourgogne-Franche-Comté;1.909;1.949;1.099;0;1.909;0
+76700;Gonfreville-l'Orcher;76;Seine-Maritime;28;Normandie;2.04;2.07;1.3;0;0;2.09
+78700;Conflans-Sainte-Honorine;78;Yvelines;11;Île-de-France;2.229;0;0;0;2.169;2.289
+83330;Le Beausset;83;Var;93;Provence-Alpes-Côte d'Azur;1.979;0;0;0;1.939;2.039
+6300;Nice;6;Alpes-Maritimes;93;Provence-Alpes-Côte d'Azur;1.99;0;0;1.034;1.99;0
+1300;Chazey-Bons;1;Ain;84;Auvergne-Rhône-Alpes;1.924;0;0;0;1.889;1.975

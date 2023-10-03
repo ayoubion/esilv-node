@@ -16,3 +16,7 @@ Array.prototype.encodeCSV = function ({delimiter = ";"} = {}) {
 
     return `${headers}\n${values.join('\n')}`;
 }
+
+Array.prototype.sum = function () {
+  return this.reduce((acc, item) => acc + item, 0);
+};
