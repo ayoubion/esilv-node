@@ -5,6 +5,6 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./backend:/home/node/app
+      - ./server:/home/node/app
     working_dir: /home/node/app
     environment: {}

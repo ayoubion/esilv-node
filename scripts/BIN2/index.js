@@ -26,7 +26,7 @@ https
         if (res.headers["content-type"].includes("text/html")) {
           data = new JSDOM(data.toString()).window.document;
         }
-        if (res.headers["content-type"].includes("image/")) {
+        if (res.headers["content-type"].includes("image/") || res.headers["content-type"].includes("video/")) {
           const extension = res.headers["content-type"].split("/")[1];
           fs.writeFile(path.join(process.cwd(), "image." + extension), data);
           return;
