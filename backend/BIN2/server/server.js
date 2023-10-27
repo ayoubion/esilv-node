@@ -1,5 +1,6 @@
 const express = require("express");
 const PORT = process.env.PORT || 3000;
+const userRouter = require('./routes/user');
 const app = express();
 
 //function parseBody(req, res, next) {
@@ -45,6 +46,8 @@ app.put("/", (req, res, next) => {
 app.patch("/", (req, res, next) => {
   res.send("Hello World! from PATCH" + JSON.stringify(req.body));
 });
+
+app.use(userRouter);
 
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
