@@ -14,3 +14,18 @@ Content-Type: application/json
 {
     "name": "John"
 }
+
+###
+GET http://localhost:3000/users
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email": "j2@j.com",
+    "password": "Azerty123!"
+}
+
+###
+GET http://localhost:3000/users/3

@@ -52,7 +52,34 @@ router.patch("/users/:id", (req, res, next) => {
     });
   }
 });
-router.delete("/users/:id", (req, res, next) => {});
-router.put("/users/:id", (req, res, next) => {});
+
+router.delete("/users/:id", (req, res, next) => {
+  const userIndex = users.findIndex((u) => u.id === req.params.id);
+  if (userIndex === -1) {
+    res.sendStatus(404);
+  } else {
+    users.splice(userIndex, 1);
+    res.sendStatus(204);
+  }
+});
+
+router.put("/users/:id", (req, res, next) => {
+  try {
+    const userIndex = users.findIndex((u) => u.id === req.params.id);
+    const user = req.body;
+    user.id = req.params.id;
+    if (userIndex === -1) {
+      users.push(user);
+      res.status(201).json(user);
+    } else {
+      users[userIndex] = user;
+      res.json(user);
+    }
+  } catch (err) {
+    res.status(422).json({
+      email: err.message,
+    });
+  }
+});
 
 module.exports = router;
