@@ -31,18 +31,18 @@ router.get("/users/:id", async (req, res, next) => {
   }
 });
 
-router.patch("/users/:id", (req, res, next) => {
+router.patch("/users/:id", async (req, res, next) => {
   try {
-    const userIndex = users.findIndex((u) => u.id === req.params.id);
-    if (userIndex === -1) {
+    const result = await User.update(req.body, {
+      where: {
+        id: parseInt(req.params.id),
+      },
+      individualHooks: true
+    });
+    if (result[0] === 0) {
       res.sendStatus(404);
     } else {
-      const user = Object.assign({}, users[userIndex], req.body);
-      if (user.email === undefined) {
-        throw new Error("email not found");
-      }
-      users[userIndex] = user;
-      res.json(user);
+      res.json(await User.findByPk(parseInt(req.params.id)));
     }
   } catch (err) {
     res.status(422).json({
@@ -51,28 +51,25 @@ router.patch("/users/:id", (req, res, next) => {
   }
 });
 
-router.delete("/users/:id", (req, res, next) => {
-  const userIndex = users.findIndex((u) => u.id === req.params.id);
-  if (userIndex === -1) {
-    res.sendStatus(404);
-  } else {
-    users.splice(userIndex, 1);
-    res.sendStatus(204);
-  }
+router.delete("/users/:id", async (req, res, next) => {
+  const result = await User.destroy({
+    where: {
+      id: parseInt(req.params.id),
+    },
+  });
+  res.sendStatus(result === 0 ? 404 : 204);
 });
 
-router.put("/users/:id", (req, res, next) => {
+router.put("/users/:id", async (req, res, next) => {
   try {
-    const userIndex = users.findIndex((u) => u.id === req.params.id);
-    const user = req.body;
-    user.id = req.params.id;
-    if (userIndex === -1) {
-      users.push(user);
-      res.status(201).json(user);
-    } else {
-      users[userIndex] = user;
-      res.json(user);
-    }
+    const result = await User.destroy({
+      where: {
+        id: parseInt(req.params.id),
+      },
+    });
+    res
+      .status(result === 1 ? 200 : 201)
+      .json(await User.create({ ...req.body, id: parseInt(req.params.id) }));
   } catch (err) {
     res.status(422).json({
       email: err.message,

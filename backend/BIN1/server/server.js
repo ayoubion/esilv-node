@@ -1,6 +1,7 @@
 const express = require("express");
 require('./models/db');
 const UsersRouter = require("./routes/usersDb");
+const SecurityRouter = require("./routes/security");
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.put("/", (req, res, next) => {
 });
 
 app.use(UsersRouter);
+app.use(SecurityRouter);
 
 app.listen(3000, () => {
   console.log("Server listening on port 3000");
