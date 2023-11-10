@@ -19,12 +19,34 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTY5OTYyNzAwOCwiZXhwIjoxNjk5Nzk5ODA4fQ.mBeKY3fALDCnIveh1Gre8wsb4c19aCcXREVKJbT7hEY
+
+###
+GET http://localhost:3000/users/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTY5OTYyNzAwOCwiZXhwIjoxNjk5Nzk5ODA4fQ.mBeKY3fALDCnIveh1Gre8wsb4c19aCcXREVKJbT7hEY
 
 ###
 POST http://localhost:3000/users
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTY5OTYyNzAwOCwiZXhwIjoxNjk5Nzk5ODA4fQ.mBeKY3fALDCnIveh1Gre8wsb4c19aCcXREVKJbT7hEY
 
 {
-    "email": "j@j.com",
+    "email": "j2@j.com",
+    "password": "Azerty1234!"
+}
+###
+PATCH http://localhost:3000/users/4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTY5OTYyNzAwOCwiZXhwIjoxNjk5Nzk5ODA4fQ.mBeKY3fALDCnIveh1Gre8wsb4c19aCcXREVKJbT7hEY
+
+{
+    "password": "Azerty1234!"
+}
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "j2@j.com",
     "password": "Azerty1234!"
 }
