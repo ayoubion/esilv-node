@@ -1,9 +1,13 @@
 const { Router } = require("express");
 const User = require("../models/User");
+const checkAuth = require("../middlewares/checkAuth");
 const router = new Router();
 
-router.get("/users", async (req, res, next) => {
+router.get("/users", checkAuth, async (req, res, next) => {
   //res.status(200).send(JSON.stringify(users));
+  if (req.userId) {
+    req.query.id = req.userId;
+  }
   res.json(
     await User.findAll({
       where: req.query,
@@ -31,13 +35,14 @@ router.get("/users/:id", async (req, res, next) => {
   }
 });
 
-router.patch("/users/:id", async (req, res, next) => {
+router.patch("/users/:id", checkAuth, async (req, res, next) => {
+  if (req.userId !== parseInt(req.params.id)) res.sendStatus(403);
   try {
     const result = await User.update(req.body, {
       where: {
         id: parseInt(req.params.id),
       },
-      individualHooks: true
+      individualHooks: true,
     });
     if (result[0] === 0) {
       res.sendStatus(404);
@@ -51,7 +56,7 @@ router.patch("/users/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/users/:id", async (req, res, next) => {
+router.delete("/users/:id", checkAuth, async (req, res, next) => {
   const result = await User.destroy({
     where: {
       id: parseInt(req.params.id),

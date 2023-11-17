@@ -9,7 +9,8 @@ services:
     working_dir: /home/node/app
     environment:
       DATABASE_URL: mysql://root:password@database:3306/app
-  
+      JWT_SECRET: myVery-Very-StRoNg-Secret
+
   database:
     image: mysql/mysql-server
     ports:
@@ -17,7 +18,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: app
-      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_HOST: "%"
     volumes:
       - db-data:/var/lib/mysql
 
