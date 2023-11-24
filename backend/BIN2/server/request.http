@@ -1,3 +1,5 @@
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTY5OTYyNzAwOCwiZXhwIjoxNjk5Nzk5ODA4fQ.mBeKY3fALDCnIveh1Gre8wsb4c19aCcXREVKJbT7hEY
+
 GET http://localhost:3000?name=John&age=20
 
 ###
@@ -19,16 +21,16 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTY5OTYyNzAwOCwiZXhwIjoxNjk5Nzk5ODA4fQ.mBeKY3fALDCnIveh1Gre8wsb4c19aCcXREVKJbT7hEY
+Authorization: Bearer {{token}}
 
 ###
 GET http://localhost:3000/users/5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTY5OTYyNzAwOCwiZXhwIjoxNjk5Nzk5ODA4fQ.mBeKY3fALDCnIveh1Gre8wsb4c19aCcXREVKJbT7hEY
+Authorization: Bearer {{token}}
 
 ###
 POST http://localhost:3000/users
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTY5OTYyNzAwOCwiZXhwIjoxNjk5Nzk5ODA4fQ.mBeKY3fALDCnIveh1Gre8wsb4c19aCcXREVKJbT7hEY
+Authorization: Bearer {{token}}
 
 {
     "email": "j2@j.com",
@@ -37,7 +39,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhd
 ###
 PATCH http://localhost:3000/users/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTY5OTYyNzAwOCwiZXhwIjoxNjk5Nzk5ODA4fQ.mBeKY3fALDCnIveh1Gre8wsb4c19aCcXREVKJbT7hEY
+Authorization: Bearer {{token}}
 
 {
     "password": "Azerty1234!"
